@@ -3,6 +3,11 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/tabla',
+    pathMatch: 'full'
+  },
+  {
     path: "tabla",
     loadChildren: './components/tabla/tabla.module#TablaModule'
   },
@@ -13,6 +18,11 @@ const routes: Routes = [
   {
     path: "componente-tres",
     loadChildren: './components/componente-tres/componente-tres.module#ComponenteTresModule'
+  },
+  {
+    path: "**",
+    redirectTo: '/tabla',
+    pathMatch: 'full'
   },
 ];
 
