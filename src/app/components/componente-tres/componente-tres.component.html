@@ -1,1 +1,39 @@
-<p>componente-tres works!</p>
+<form [formGroup]="form">
+    <mat-list formArrayName="todo" *ngFor="let item of form.get('todo').controls; let i=index;">
+        <mat-list-item [formGroupName]="i">
+
+            <div class="box check">
+                <mat-checkbox formControlName="check"
+                [disabled]="item.get('param').value == 1"
+                color="primary"
+                (change)="verDatos(item)" 
+                [checked]="item.get('param').value == 1"
+                [value]="check">
+                </mat-checkbox>
+            </div>
+
+            <div class="box id">
+                <span>{{item.get('id').value}}</span>
+            </div>
+
+            <div class="box descripcion">
+                <mat-form-field>
+                    <mat-select formControlName="desc" [disabled]="item.get('param').value == 1 || item.get('param').value == 2">
+                        <mat-option *ngFor="let list of response" [value]="list.desc" [disabled]="disabledSelectOptns(item.get('id').value)">
+                            {{list.desc}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="box porcentaje">
+                <mat-form-field>
+                    <input matInput formControlName="porcentaje">
+                </mat-form-field>
+            </div>
+
+        </mat-list-item>
+    </mat-list>
+
+    <button mat-raised-button (click)="agregar()">Agregar</button>
+</form>

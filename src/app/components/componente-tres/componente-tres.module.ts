@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
-import { ComponenteTresRoutingModule } from './componente-tres.routing.module';
 import { ComponenteTresComponent } from './componente-tres.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MaterialModule } from '../../material.module';
+import { CommonModule } from '@angular/common';
+import { ComponenteTresRoutingModule } from './componente-tres.routing.module';
 
 @NgModule({
   imports: [
-    ComponenteTresRoutingModule
+    CommonModule,
+    ComponenteTresRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
   ],
   declarations: [ComponenteTresComponent]
 })
